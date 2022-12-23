@@ -22,7 +22,7 @@ export const TrendingMovieList = () => {
     <ul>
       {trendingMovies.map(({ id, original_title }) => (
         <li key={id}>
-          <NavLink>{original_title}</NavLink>
+          <NavLink to={`/movies/${id}`}>{original_title}</NavLink>
         </li>
       ))}
     </ul>
