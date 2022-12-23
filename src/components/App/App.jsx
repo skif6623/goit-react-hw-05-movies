@@ -1,12 +1,6 @@
-import { getTrending } from 'tmdbAPI';
 import { NavLink, Routes, Route } from 'react-router-dom';
-import { Home } from 'components/Home/Home';
+import { Home } from 'pages/Home/Home';
 export const App = () => {
-  // useEffect(() => {
-  //   const movies = getTrending();
-  //   console.log(movies);
-  // });
-
   return (
     <div>
       <header>
