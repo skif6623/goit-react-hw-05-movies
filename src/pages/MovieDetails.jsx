@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieDetails } from 'servise/tmdbAPI';
+import { Link, Outlet } from 'react-router-dom';
 
 export const MovieDetails = () => {
-  const [movie, setMovie] = useState();
+  const [movie, setMovie] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -48,6 +49,16 @@ export const MovieDetails = () => {
           <p>{genreList}</p>
         </li>
       </ul>
+
+      <ul>
+        <li>
+          <Link to="cast">Cast</Link>
+        </li>
+        <li>
+          <Link to="reviews">Reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
     </div>
   );
 };
