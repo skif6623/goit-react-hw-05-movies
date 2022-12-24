@@ -13,15 +13,41 @@ export const MovieDetails = () => {
     };
 
     fetchMovieDetails(id);
-  });
+  }, [id]);
 
-  const console = () => {
-    console.log(movie);
+  if (!movie) {
+    return;
+  }
+
+  const { original_title, vote_average, overview, genres, poster_path } = movie;
+
+  const getGenres = () => {
+    return genres.map(genre => genre.name);
   };
 
+  const genreList = getGenres().join(', ');
+  const poster = `https://image.tmdb.org/t/p/w500${poster_path}`;
+
   return (
-    <button type="button" onClick={() => console}>
-      Показати об'єкт фільму
-    </button>
+    <div>
+      <img src={poster} alt="" />
+      <h2>{original_title}</h2>
+      <ul>
+        <li>
+          <p>
+            User score:{' '}
+            {Number.parseFloat((vote_average * 10).toString().slice(0, 3))}%
+          </p>
+        </li>
+        <li>
+          <p>Overview</p>
+          <p>{overview}</p>
+        </li>
+        <li>
+          <p>Genres</p>
+          <p>{genreList}</p>
+        </li>
+      </ul>
+    </div>
   );
 };
