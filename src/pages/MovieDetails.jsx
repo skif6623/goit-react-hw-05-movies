@@ -20,7 +20,7 @@ export const MovieDetails = () => {
   };
 
   return (
-    <button type="button" onClick={console}>
+    <button type="button" onClick={() => console}>
       Показати об'єкт фільму
     </button>
   );

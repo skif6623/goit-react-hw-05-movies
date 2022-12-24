@@ -19,4 +19,5 @@ export const getMovieDetails = async id => {
       api_key: API_KEY,
     },
   });
+  return response.data;
 };
