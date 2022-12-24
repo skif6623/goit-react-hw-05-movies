@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { getTrending } from 'tmdbAPI';
+import { getTrending } from 'servise/tmdbAPI';
 
 export const TrendingMovieList = () => {
   const [trendingMovies, setTrendingMovies] = useState(null);
