@@ -2,6 +2,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieDetails } from 'servise/tmdbAPI';
 import { Link, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 
 export const MovieDetails = () => {
   const location = useLocation();
@@ -64,7 +65,9 @@ export const MovieDetails = () => {
           </Link>
         </li>
       </ul>
-      <Outlet />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
