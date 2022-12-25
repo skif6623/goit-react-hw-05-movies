@@ -32,7 +32,7 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      <Link to={location.state.from}>Go back</Link>
+      <Link to={location.state?.from}>Go back</Link>
       <img src={poster} alt="" />
       <h2>{original_title}</h2>
       <ul>

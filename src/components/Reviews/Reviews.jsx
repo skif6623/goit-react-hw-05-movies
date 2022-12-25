@@ -1,6 +1,7 @@
 import { getMovieReview } from 'servise/tmdbAPI';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { ReviewsList } from 'components/ReviewsList/ReviewsList';
 
 export const Reviews = () => {
   const [reviews, setReview] = useState(null);
@@ -18,15 +19,5 @@ export const Reviews = () => {
     return;
   }
 
-  return (
-    <div>
-      <ul>
-        {reviews.map(review => (
-          <li key={review.id}>
-            <p>{review.content}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+  return <div>{reviews && <ReviewsList reviews={reviews} />}</div>;
 };
