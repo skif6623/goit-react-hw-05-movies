@@ -19,5 +19,13 @@ export const Reviews = () => {
     return;
   }
 
-  return <div>{reviews && <ReviewsList reviews={reviews} />}</div>;
+  return (
+    <div>
+      {reviews.langth > 0 ? (
+        <ReviewsList reviews={reviews} />
+      ) : (
+        'Rewiews not found'
+      )}
+    </div>
+  );
 };
