@@ -1,4 +1,4 @@
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Search } from 'components/Search/Search';
 import { useEffect, useState } from 'react';
 import { getSearchMovie } from 'servise/tmdbAPI';
@@ -19,7 +19,7 @@ export const Movies = () => {
     };
 
     fetchSearchMovie(query);
-  }, [query, films]);
+  }, [query]);
 
   const setQuery = value => {
     setSearchParams(value === '' ? {} : { query: value });
@@ -28,18 +28,7 @@ export const Movies = () => {
   return (
     <main>
       <Search onSet={setQuery} />
-      {films && <SearchList films={films} />}
+      {films && query && <SearchList films={films} />}
     </main>
   );
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const movieSearch = searchParams.get('querry') ?? '';
-  // const handleSubmit = query => {
-  //   const queryParams = query !== '' ? { query } : {};
-  //   setSearchParams(queryParams);
-  // };
-  // return (
-  //   <>
-  //     <Search value={movieSearch} onChange={handleSubmit} />
-  //   </>
-  // );
 };

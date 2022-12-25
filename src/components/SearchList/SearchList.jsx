@@ -5,7 +5,7 @@ export const SearchList = ({ films }) => {
     <ul>
       {films.map(film => (
         <li key={film.id}>
-          <Link>{film.original_title}</Link>
+          <Link to={`/movies/${film.id}`}>{film.original_title}</Link>
         </li>
       ))}
     </ul>
