@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMovieDetails } from 'servise/tmdbAPI';
 import { Link, Outlet } from 'react-router-dom';
 
 export const MovieDetails = () => {
+  const location = useLocation();
   const [movie, setMovie] = useState(null);
   const { id } = useParams();
 
@@ -31,6 +32,7 @@ export const MovieDetails = () => {
 
   return (
     <div>
+      <Link to={location.state.from}>Go back</Link>
       <img src={poster} alt="" />
       <h2>{original_title}</h2>
       <ul>
