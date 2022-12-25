@@ -32,7 +32,7 @@ export const MovieDetails = () => {
 
   return (
     <div>
-      <Link to={location.state?.from}>Go back</Link>
+      <Link to={location.state?.from ?? '/'}>Go back</Link>
       <img src={poster} alt="" />
       <h2>{original_title}</h2>
       <ul>
@@ -54,10 +54,14 @@ export const MovieDetails = () => {
 
       <ul>
         <li>
-          <Link to="cast">Cast</Link>
+          <Link to="cast" state={{ from: location.state?.from }}>
+            Cast
+          </Link>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews" state={{ from: location.state?.from }}>
+            Reviews
+          </Link>
         </li>
       </ul>
       <Outlet />

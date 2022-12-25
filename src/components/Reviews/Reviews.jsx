@@ -21,7 +21,7 @@ export const Reviews = () => {
 
   return (
     <div>
-      {reviews.langth > 0 ? (
+      {reviews.length > 0 ? (
         <ReviewsList reviews={reviews} />
       ) : (
         'Rewiews not found'
