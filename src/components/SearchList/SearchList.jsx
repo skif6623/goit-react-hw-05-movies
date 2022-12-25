@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
 export const SearchList = ({ films }) => {
@@ -13,4 +14,13 @@ export const SearchList = ({ films }) => {
       ))}
     </ul>
   );
+};
+
+SearchList.propTypes = {
+  films: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      original_title: PropTypes.string.isRequired,
+    })
+  ),
 };

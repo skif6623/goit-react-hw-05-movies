@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const Search = ({ onSet }) => {
   const handleSubmit = e => {
     e.preventDefault();
@@ -10,4 +12,8 @@ export const Search = ({ onSet }) => {
       <button type="submit">Submit</button>
     </form>
   );
+};
+
+Search.propTypes = {
+  onSet: PropTypes.func.isRequired,
 };

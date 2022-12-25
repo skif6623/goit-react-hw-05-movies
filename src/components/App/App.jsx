@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { SharedLayout } from 'components/SharedLayout/SharedLayout';
+import { GlobalStyle } from 'GlobalStyle';
 
 const Home = lazy(() =>
   import('pages/Home/Home').then(module => ({
@@ -47,6 +48,7 @@ export const App = () => {
           <Route path="*" element={<div>Not found</div>} />
         </Route>
       </Routes>
+      <GlobalStyle />
     </div>
   );
 };
