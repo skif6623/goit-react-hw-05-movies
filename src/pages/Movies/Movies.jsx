@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { getSearchMovie } from 'servise/tmdbAPI';
 import { SearchList } from 'components/SearchList/SearchList';
 
-export const Movies = () => {
+const Movies = () => {
   const [films, setFilms] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
@@ -32,3 +32,5 @@ export const Movies = () => {
     </main>
   );
 };
+
+export default Movies;
