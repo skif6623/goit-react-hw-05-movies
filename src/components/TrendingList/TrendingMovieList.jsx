@@ -1,19 +1,25 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import { getTrending } from 'servise/tmdbAPI';
-import { useLocation } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+import { TrendingMovieCard } from './TrendingMovieCard';
+import { MovieList } from './TrendingMovieList.styled';
 
 export const TrendingMovieList = () => {
   const [trendingMovies, setTrendingMovies] = useState(null);
-  const location = useLocation();
 
   useEffect(() => {
-    const fetchTrending = async () => {
-      const movies = await getTrending();
-      setTrendingMovies(movies.results);
-    };
+    try {
+      const fetchTrending = async () => {
+        const movies = await getTrending();
+        setTrendingMovies(movies.results);
+      };
 
-    fetchTrending();
+      fetchTrending();
+    } catch (error) {
+      toast.error(
+        'Виникла помилка при завантаженні. Перезагрузіть будь ласка сторінку'
+      );
+    }
   }, []);
 
   if (!trendingMovies) {
@@ -21,14 +27,11 @@ export const TrendingMovieList = () => {
   }
 
   return (
-    <ul>
-      {trendingMovies.map(({ id, original_title }) => (
-        <li key={id}>
-          <NavLink to={`/movies/${id}`} state={{ from: location }}>
-            {original_title}
-          </NavLink>
-        </li>
-      ))}
-    </ul>
+    <>
+      <MovieList>
+        <TrendingMovieCard trendingMovies={trendingMovies} />
+      </MovieList>
+      <Toaster />
+    </>
   );
 };
